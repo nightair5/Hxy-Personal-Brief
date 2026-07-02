@@ -342,6 +342,115 @@
       color: #2b5b89;
     }
 
+    /* Petal background system: soft static field + sparse reusable transparent petals. */
+    .has-petal-bg {
+      isolation: isolate;
+    }
+    .has-petal-bg > .wrap {
+      position: relative;
+      z-index: 3;
+    }
+    .has-petal-bg::before,
+    .has-petal-bg::after {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+    }
+    .has-petal-bg::before {
+      inset: -8% -6%;
+      z-index: 0;
+      background-image: url("assets/background/petal-field-soft.webp");
+      background-repeat: no-repeat;
+      background-size: max(1680px, 112vw) auto;
+      background-position: var(--petal-position, center top);
+      opacity: var(--petal-field-opacity, .34);
+      filter: saturate(.95) blur(.15px);
+      mix-blend-mode: multiply;
+      transform: translate3d(var(--petal-field-x, 0), var(--petal-field-y, 0), 0) scale(var(--petal-field-scale, 1.03));
+    }
+    .has-petal-bg::after {
+      inset: 0;
+      z-index: 1;
+      background:
+        radial-gradient(circle at var(--petal-wash-x, 52%) var(--petal-wash-y, 42%), rgba(255,255,255,.32), transparent 38rem),
+        linear-gradient(180deg, rgba(255,255,255,.58), rgba(255,255,255,.76));
+    }
+    .section.gray.has-petal-bg::after {
+      background:
+        radial-gradient(circle at var(--petal-wash-x, 52%) var(--petal-wash-y, 42%), rgba(255,255,255,.22), transparent 36rem),
+        linear-gradient(180deg, rgba(245,245,247,.70), rgba(245,245,247,.82));
+    }
+    .section.blue.has-petal-bg::after {
+      background:
+        radial-gradient(circle at 82% 18%, rgba(234,243,255,.50), transparent 36rem),
+        linear-gradient(180deg, rgba(255,255,255,.72), rgba(234,243,255,.78));
+    }
+    .petal-left {
+      --petal-position: left top;
+      --petal-field-x: -4%;
+      --petal-wash-x: 38%;
+    }
+    .petal-right {
+      --petal-position: right top;
+      --petal-field-x: 4%;
+      --petal-wash-x: 68%;
+    }
+    .petal-quiet { --petal-field-opacity: .22; }
+    .petal-blue { --petal-field-opacity: .30; --petal-wash-y: 30%; }
+    .petal-contact { --petal-field-opacity: .40; --petal-position: center bottom; }
+    .petal-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      overflow: hidden;
+      pointer-events: none;
+      contain: layout paint;
+    }
+    .petal {
+      position: absolute;
+      left: var(--left, 50%);
+      top: var(--top, 20%);
+      width: var(--size, 96px);
+      height: var(--size, 96px);
+      background-image: var(--petal-src);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      opacity: var(--alpha, .24);
+      filter: blur(var(--blur, 0)) saturate(.95);
+      transform: translate3d(0,0,0) rotate(var(--rotate, 0deg)) scale(var(--scale, 1));
+      will-change: transform, opacity;
+    }
+    .petal-float {
+      animation: petalFloat var(--float-duration, 7s) var(--ease-out) var(--float-delay, 0s) infinite alternate;
+    }
+    .petal-fall {
+      top: -18%;
+      animation: petalFall var(--fall-duration, 24s) linear var(--fall-delay, 0s) infinite;
+    }
+    @keyframes petalFloat {
+      0% {
+        transform: translate3d(0, 0, 0) rotate(var(--rotate, 0deg)) scale(var(--scale, 1));
+      }
+      100% {
+        transform: translate3d(var(--float-x, 8px), var(--float-y, -10px), 0) rotate(calc(var(--rotate, 0deg) + var(--spin, 5deg))) scale(var(--scale, 1));
+      }
+    }
+    @keyframes petalFall {
+      0% {
+        opacity: 0;
+        transform: translate3d(0, -8vh, 0) rotate(var(--rotate, 0deg)) scale(var(--scale, 1));
+      }
+      10%, 72% { opacity: var(--alpha, .22); }
+      48% {
+        transform: translate3d(var(--drift-mid, 26px), 56vh, 0) rotate(calc(var(--rotate, 0deg) + var(--spin, 28deg))) scale(var(--scale, 1));
+      }
+      100% {
+        opacity: 0;
+        transform: translate3d(var(--drift-end, -18px), 120vh, 0) rotate(calc(var(--rotate, 0deg) + var(--spin, 52deg))) scale(var(--scale, 1));
+      }
+    }
+
     .section {
       position: relative;
       padding: 112px 0;
@@ -1353,6 +1462,7 @@
       transition: clip-path var(--duration-slow) var(--ease-out), transform var(--duration-slow) var(--ease-out), opacity var(--duration-normal) var(--ease-out);
     }
     .motion-ready .section.is-visible .section-title,
+    .motion-ready .section-head.reveal.is-visible .section-title,
     .motion-ready .education-lead.reveal.is-visible h2,
     .motion-ready .contact-panel.reveal.is-visible h2 {
       clip-path: inset(0 0 0 0);
@@ -1361,6 +1471,16 @@
     }
 
     @media (max-width: 980px) {
+      .has-petal-bg::before {
+        background-size: max(1280px, 150vw) auto;
+        opacity: min(var(--petal-field-opacity, .28), .26);
+      }
+      .petal {
+        width: min(var(--size, 84px), 132px);
+        height: min(var(--size, 84px), 132px);
+      }
+      .petal-fall:nth-child(n+7),
+      .petal-float:nth-child(n+6) { display: none; }
       .nav-links,
       .nav-download { display: none; }
       .mobile-toggle { display: grid; place-items: center; }
@@ -1425,6 +1545,21 @@
     }
 
     @media (max-width: 640px) {
+      .has-petal-bg::before {
+        inset: -4% -36%;
+        background-size: 1120px auto;
+        opacity: .18;
+      }
+      .has-petal-bg::after {
+        background: linear-gradient(180deg, rgba(255,255,255,.76), rgba(255,255,255,.84));
+      }
+      .petal {
+        width: min(var(--size, 70px), 96px);
+        height: min(var(--size, 70px), 96px);
+        opacity: min(var(--alpha, .18), .18);
+      }
+      .petal-fall-layer { display: none; }
+      .petal-float:nth-child(n+4) { display: none; }
       .site-header { height: 52px; }
       .nav-wrap {
         width: calc(100vw - 32px);
@@ -1612,6 +1747,9 @@
       }
       .dify-block { animation: none !important; }
       .film-track::after { width: 100% !important; }
+      .petal-fall-layer { display: none !important; }
+      .petal-float { animation: none !important; }
+      .has-petal-bg::before { transform: none !important; }
     }
   </style>
 </head>
@@ -1641,7 +1779,7 @@
   </header>
 
   <main id="main">
-    <section class="hero" id="home">
+    <section class="hero has-petal-bg has-floating-petals has-falling-petals petal-left" id="home">
       <div class="wrap hero-grid">
         <div class="hero-copy reveal">
           <p class="hero-kicker">AI Product Operations / Agent Operations</p>
@@ -1683,7 +1821,7 @@
       </div>
     </section>
 
-    <section class="section gray" id="advantage">
+    <section class="section gray has-petal-bg petal-quiet petal-left" id="advantage">
       <div class="wrap">
         <header class="section-head reveal">
           <p class="section-label">优势摘要</p>
@@ -1709,7 +1847,7 @@
       </div>
     </section>
 
-    <section class="section" id="education">
+    <section class="section has-petal-bg petal-right" id="education">
       <div class="wrap education-layout">
         <div class="education-lead reveal">
           <p class="section-label">教育背景</p>
@@ -1749,7 +1887,7 @@
       </div>
     </section>
 
-    <section class="section gray" id="ai-capabilities">
+    <section class="section gray has-petal-bg petal-quiet" id="ai-capabilities">
       <div class="wrap">
         <header class="section-head reveal">
           <p class="section-label">AI 相关运营能力</p>
@@ -1793,7 +1931,7 @@
       </div>
     </section>
 
-    <section class="section" id="ai-projects">
+    <section class="section has-petal-bg has-floating-petals has-falling-petals petal-blue" id="ai-projects">
       <div class="wrap">
         <header class="section-head reveal">
           <p class="section-label">AI 项目与作品经历</p>
@@ -1874,7 +2012,7 @@
       </div>
     </section>
 
-    <section class="section gray" id="representative">
+    <section class="section gray has-petal-bg petal-right" id="representative">
       <div class="wrap">
         <header class="section-head reveal">
           <p class="section-label">代表项目经历</p>
@@ -1920,7 +2058,7 @@
       </div>
     </section>
 
-    <section class="section" id="organization">
+    <section class="section has-petal-bg petal-quiet petal-left" id="organization">
       <div class="wrap">
         <header class="section-head reveal">
           <p class="section-label">组织实践与内容运营</p>
@@ -1950,7 +2088,7 @@
       </div>
     </section>
 
-    <section class="section gray" id="tools">
+    <section class="section gray has-petal-bg petal-quiet" id="tools">
       <div class="wrap">
         <header class="section-head reveal">
           <p class="section-label">工具栈</p>
@@ -1983,7 +2121,7 @@
       </div>
     </section>
 
-    <section class="section" id="more-works">
+    <section class="section has-petal-bg has-floating-petals petal-right" id="more-works">
       <div class="wrap">
         <header class="section-head reveal">
           <p class="section-label">More Works</p>
@@ -2078,7 +2216,7 @@
       </div>
     </section>
 
-    <section class="section blue" id="contact">
+    <section class="section blue has-petal-bg has-floating-petals has-falling-petals petal-contact" id="contact">
       <div class="wrap">
         <div class="contact-panel reveal">
           <div>
@@ -2136,13 +2274,133 @@
       const backTop = $('#backTop');
       const email = '3091595176@qq.com';
 
+      const petalAssets = [
+        'assets/petals/petal-large-01.png',
+        'assets/petals/petal-large-02.png',
+        'assets/petals/petal-medium-01.png',
+        'assets/petals/petal-medium-02.png',
+        'assets/petals/petal-medium-03.png',
+        'assets/petals/petal-medium-04.png',
+        'assets/petals/petal-small-01.png',
+        'assets/petals/petal-small-02.png',
+        'assets/petals/petal-small-03.png',
+        'assets/petals/petal-small-04.png',
+        'assets/petals/petal-small-05.png',
+        'assets/petals/petal-small-06.png',
+        'assets/petals/petal-small-07.png',
+        'assets/petals/petal-small-08.png',
+        'assets/petals/petal-edge-01.png',
+        'assets/petals/petal-edge-03.png'
+      ];
+      const floatPresets = [
+        { left: '1%', top: '6%', size: 172, rotate: -16, alpha: .20, asset: 0, blur: '0px', x: 10, y: -12, spin: 5, duration: 8 },
+        { left: '87%', top: '7%', size: 152, rotate: 12, alpha: .22, asset: 2, blur: '0px', x: -8, y: -10, spin: -4, duration: 9 },
+        { left: '4%', top: '64%', size: 150, rotate: 8, alpha: .18, asset: 1, blur: '.2px', x: 12, y: 8, spin: 3, duration: 10 },
+        { left: '82%', top: '58%', size: 132, rotate: -10, alpha: .19, asset: 3, blur: '.15px', x: -10, y: 10, spin: -5, duration: 8.5 },
+        { left: '94%', top: '34%', size: 86, rotate: 20, alpha: .14, asset: 7, blur: '.25px', x: -6, y: -8, spin: 7, duration: 7.5 },
+        { left: '48%', top: '90%', size: 94, rotate: -12, alpha: .16, asset: 6, blur: '.1px', x: 8, y: -8, spin: 4, duration: 9.5 },
+        { left: '-2%', top: '86%', size: 180, rotate: -4, alpha: .10, asset: 14, blur: '2px', x: 6, y: -6, spin: 2, duration: 11 },
+        { left: '96%', top: '82%', size: 170, rotate: 10, alpha: .10, asset: 15, blur: '2px', x: -7, y: 7, spin: -2, duration: 11 }
+      ];
+      const sectionPetalProfiles = {
+        home: { float: 6, fall: 6 },
+        'ai-projects': { float: 4, fall: 4 },
+        'more-works': { float: 4, fall: 0 },
+        contact: { float: 3, fall: 3 }
+      };
+
+      function createPetal(section, type, index) {
+        const petal = document.createElement('span');
+        petal.className = `petal petal-${type}`;
+        if (type === 'float') {
+          const preset = floatPresets[(index + (section.id.length % 3)) % floatPresets.length];
+          petal.style.setProperty('--petal-src', `url("${petalAssets[preset.asset]}")`);
+          petal.style.setProperty('--left', preset.left);
+          petal.style.setProperty('--top', preset.top);
+          petal.style.setProperty('--size', `${preset.size}px`);
+          petal.style.setProperty('--rotate', `${preset.rotate}deg`);
+          petal.style.setProperty('--alpha', preset.alpha);
+          petal.style.setProperty('--blur', preset.blur);
+          petal.style.setProperty('--float-x', `${preset.x}px`);
+          petal.style.setProperty('--float-y', `${preset.y}px`);
+          petal.style.setProperty('--spin', `${preset.spin}deg`);
+          petal.style.setProperty('--float-duration', `${preset.duration + index * .35}s`);
+          petal.style.setProperty('--float-delay', `${index * -.9}s`);
+          petal.style.setProperty('--scale', `${.86 + (index % 3) * .08}`);
+        } else {
+          const assetIndex = (index * 3 + section.id.length) % petalAssets.length;
+          const size = 34 + (index % 5) * 14;
+          const left = (8 + ((index * 17 + section.id.length * 5) % 86));
+          const drift = 18 + (index % 4) * 16;
+          petal.style.setProperty('--petal-src', `url("${petalAssets[assetIndex]}")`);
+          petal.style.setProperty('--left', `${left}%`);
+          petal.style.setProperty('--size', `${size}px`);
+          petal.style.setProperty('--rotate', `${-24 + (index * 13) % 48}deg`);
+          petal.style.setProperty('--alpha', `${.11 + (index % 4) * .025}`);
+          petal.style.setProperty('--blur', `${index % 3 === 0 ? '.6px' : '0px'}`);
+          petal.style.setProperty('--scale', `${.82 + (index % 4) * .08}`);
+          petal.style.setProperty('--drift-mid', `${index % 2 ? -drift : drift}px`);
+          petal.style.setProperty('--drift-end', `${index % 2 ? drift * .7 : -drift * .7}px`);
+          petal.style.setProperty('--spin', `${28 + (index % 5) * 8}deg`);
+          petal.style.setProperty('--fall-duration', `${24 + (index % 6) * 3}s`);
+          petal.style.setProperty('--fall-delay', `${index * -3.1}s`);
+        }
+        return petal;
+      }
+
+      function mountPetalLayers() {
+        const isSmallScreen = window.matchMedia('(max-width: 640px)').matches;
+        $$('.has-floating-petals, .has-falling-petals').forEach((section) => {
+          const profile = sectionPetalProfiles[section.id] || { float: 3, fall: 0 };
+          if (section.classList.contains('has-floating-petals')) {
+            const layer = document.createElement('div');
+            layer.className = 'petal-layer petal-float-layer';
+            layer.setAttribute('aria-hidden', 'true');
+            const count = isSmallScreen ? Math.min(profile.float, 3) : profile.float;
+            for (let i = 0; i < count; i += 1) layer.appendChild(createPetal(section, 'float', i));
+            section.prepend(layer);
+          }
+          if (!prefersReducedMotion && section.classList.contains('has-falling-petals') && !isSmallScreen) {
+            const layer = document.createElement('div');
+            layer.className = 'petal-layer petal-fall-layer';
+            layer.setAttribute('aria-hidden', 'true');
+            const count = Math.min(profile.fall, window.matchMedia('(max-width: 980px)').matches ? 6 : 10);
+            for (let i = 0; i < count; i += 1) layer.appendChild(createPetal(section, 'fall', i));
+            section.prepend(layer);
+          }
+        });
+      }
+      mountPetalLayers();
+
+      const petalBgSections = $$('.has-petal-bg');
+      let petalParallaxTicking = false;
+      function updatePetalParallax() {
+        petalParallaxTicking = false;
+        if (prefersReducedMotion || window.innerWidth < 720) return;
+        const viewport = window.innerHeight || document.documentElement.clientHeight;
+        petalBgSections.forEach((section) => {
+          const rect = section.getBoundingClientRect();
+          if (rect.bottom < 0 || rect.top > viewport) return;
+          const offset = Math.max(-18, Math.min(18, (viewport * .5 - rect.top) * .018));
+          section.style.setProperty('--petal-field-y', `${offset}px`);
+        });
+      }
+      function requestPetalParallax() {
+        if (petalParallaxTicking || prefersReducedMotion) return;
+        petalParallaxTicking = true;
+        window.requestAnimationFrame(updatePetalParallax);
+      }
+
       function updateScrollState() {
         const scrollTop = window.scrollY || document.documentElement.scrollTop;
         backTop.classList.toggle('is-visible', scrollTop > 620);
         siteHeader.classList.toggle('is-scrolled', scrollTop > 12);
       }
       window.addEventListener('scroll', updateScrollState, { passive: true });
+      window.addEventListener('scroll', requestPetalParallax, { passive: true });
+      window.addEventListener('resize', requestPetalParallax);
       updateScrollState();
+      updatePetalParallax();
 
       mobileToggle.addEventListener('click', () => {
         const isOpen = navLinks.classList.toggle('is-open');

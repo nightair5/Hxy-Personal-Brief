@@ -15,6 +15,21 @@
 9. More Works / 综合作品
 10. 联系我
 
+## 背景与花瓣系统
+
+当前版本基于参考图拆分为三层背景语言：
+
+- `assets/background/petal-field-soft.webp`：全站极淡花瓣背景场。
+- `assets/background/petal-field.webp`：保留参考图氛围的轻量背景素材。
+- `assets/petals/`：从参考图中提取出的透明花瓣 PNG，按 `large / medium / small / edge` 分类。
+
+页面通过以下 class 控制背景与动效：
+
+- `.has-petal-bg`：启用 section 级花瓣背景。
+- `.has-floating-petals`：启用边缘悬浮花瓣。
+- `.has-falling-petals`：启用少量缓慢飘落花瓣。
+- `.petal-left`、`.petal-right`、`.petal-quiet`：控制不同 section 的背景位置与浓淡。
+
 ## 部署文件
 
 GitHub Pages 只需要以下文件：
@@ -37,6 +52,9 @@ GitHub Pages 只需要以下文件：
 - `assets/photo-monochrome-sea.webp`
 - `assets/photo-night-tide.webp`
 - `assets/photo-afterglow.webp`
+- `assets/background/petal-field.webp`
+- `assets/background/petal-field-soft.webp`
+- `assets/petals/*.png`
 
 ## 本地预览
 
