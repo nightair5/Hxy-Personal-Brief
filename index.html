@@ -1,0 +1,2326 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="黄雄业，厦门大学新闻传播学院广告学本科生，求职方向为 AI 产品运营、Agent 产品运营、AIGC 内容产品与产品运营实习。">
+  <meta name="theme-color" content="#ffffff">
+  <title>黄雄业｜AI 产品运营 / Agent 产品运营</title>
+  <style>
+    :root {
+      --white: #fff;
+      --surface: #f5f5f7;
+      --surface-2: #fbfbfd;
+      --blue-soft: #eaf3ff;
+      --text: #1d1d1f;
+      --muted: #6e6e73;
+      --muted-2: #86868b;
+      --blue: #0071e3;
+      --blue-2: #2997ff;
+      --line: rgba(0,0,0,.08);
+      --line-soft: rgba(0,0,0,.05);
+      --shadow: 0 18px 50px rgba(0,0,0,.08);
+      --radius: 28px;
+      --radius-lg: 40px;
+      --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+      --ease-out: cubic-bezier(.16, 1, .3, 1);
+      --duration-fast: 240ms;
+      --duration-normal: 700ms;
+      --duration-slow: 1100ms;
+    }
+
+    * { box-sizing: border-box; }
+    html {
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      background: var(--white);
+    }
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--text);
+      font-family: var(--font);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button { font: inherit; }
+    p, h1, h2, h3 { margin: 0; }
+
+    .skip-link {
+      position: fixed;
+      left: 16px;
+      top: -100px;
+      z-index: 1200;
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: var(--white);
+      background: var(--blue);
+      transition: top .2s ease;
+    }
+    .skip-link:focus { top: 16px; }
+
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 900;
+      height: 56px;
+      border-bottom: 1px solid rgba(0,0,0,.06);
+      background: rgba(255,255,255,.56);
+      backdrop-filter: saturate(180%) blur(20px);
+      transform: translateY(-10px);
+      opacity: 0;
+      animation: navEnter var(--duration-slow) var(--ease-out) .08s forwards;
+      transition: background var(--duration-normal) var(--ease-out), border-color var(--duration-normal) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out);
+    }
+    .site-header.is-scrolled {
+      border-color: rgba(0,0,0,.08);
+      background: rgba(255,255,255,.82);
+      box-shadow: 0 1px 0 rgba(0,0,0,.04);
+    }
+    .nav-wrap {
+      width: min(1180px, calc(100% - 48px));
+      height: 56px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-width: max-content;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+    .brand-mark {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #fff;
+      background: linear-gradient(135deg, #0071e3, #5eb9ff);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 2px;
+      color: rgba(29,29,31,.82);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+    .nav-links a {
+      position: relative;
+      padding: 8px 10px;
+      border-radius: 999px;
+      transition: color var(--duration-fast) var(--ease-out), background var(--duration-fast) var(--ease-out);
+    }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 3px;
+      height: 1px;
+      border-radius: 999px;
+      background: var(--blue);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--duration-fast) var(--ease-out);
+    }
+    .nav-links a:hover,
+    .nav-links a.is-active {
+      color: var(--text);
+      background: rgba(0,113,227,.07);
+    }
+    .nav-links a.is-active::after { transform: scaleX(1); }
+    .nav-download {
+      min-width: max-content;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .mobile-toggle {
+      display: none;
+      width: 34px;
+      height: 34px;
+      border: 0;
+      border-radius: 50%;
+      color: var(--text);
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 48px));
+      margin: 0 auto;
+    }
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      padding: 112px 0 74px;
+      background:
+        radial-gradient(circle at 72% 16%, rgba(41,151,255,.18), transparent 34rem),
+        linear-gradient(180deg, #fff 0%, #fff 58%, var(--surface) 100%);
+      overflow: hidden;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(300px, .4fr);
+      gap: clamp(44px, 6vw, 90px);
+      align-items: center;
+    }
+    .hero-copy {
+      max-width: 820px;
+      min-width: 0;
+    }
+    .hero-kicker {
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: .01em;
+    }
+    .hero h1 {
+      margin-top: 18px;
+      font-size: clamp(64px, 9vw, 118px);
+      width: max-content;
+      max-width: 100%;
+      padding: .04em .04em .08em 0;
+      line-height: .98;
+      letter-spacing: -.062em;
+      font-weight: 700;
+      overflow: visible;
+    }
+    .hero-subtitle {
+      margin-top: 22px;
+      max-width: 680px;
+      font-size: clamp(24px, 2.65vw, 38px);
+      line-height: 1.12;
+      letter-spacing: -.045em;
+      font-weight: 650;
+      overflow-wrap: normal;
+    }
+    .hero-subtitle span {
+      display: block;
+    }
+    .hero-desc {
+      max-width: 680px;
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 19px;
+      line-height: 1.65;
+      letter-spacing: -.015em;
+    }
+    .hero-meta {
+      display: grid;
+      gap: 8px;
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+    }
+    .hero-meta span {
+      position: relative;
+      padding-right: 18px;
+    }
+    .meta-row span:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      right: 2px;
+      top: 50%;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #c7c7cc;
+    }
+    .hero-actions,
+    .section-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+    .btn {
+      position: relative;
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0 18px;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--blue);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform var(--duration-fast) var(--ease-out), background var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
+    }
+    .btn::after {
+      content: "→";
+      display: inline-block;
+      opacity: 0;
+      transform: translateX(-4px);
+      transition: opacity var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+    }
+    .btn.primary {
+      color: #fff;
+      background: var(--blue);
+    }
+    .btn.secondary {
+      background: rgba(0,113,227,.08);
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      color: #005bb5;
+    }
+    .btn:hover::after {
+      opacity: 1;
+      transform: translateX(2px);
+    }
+    .btn.primary:hover {
+      color: #fff;
+      background: #0077ed;
+    }
+
+    .hero-portrait {
+      align-self: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+    }
+    .portrait-shell {
+      width: clamp(292px, 30vw, 398px);
+      aspect-ratio: 5 / 7;
+      overflow: hidden;
+      border-radius: 30px;
+      background: linear-gradient(180deg, #f4f7fb, #e8eef6);
+      box-shadow: 0 18px 50px rgba(0,0,0,.08);
+    }
+    .portrait-shell img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 42%;
+      transform: scale(1.035);
+      transition: transform var(--duration-slow) var(--ease-out);
+    }
+    .model-rail {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      max-width: 360px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .model-rail span {
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: rgba(0,113,227,.08);
+      color: #2b5b89;
+    }
+
+    .section {
+      position: relative;
+      padding: 112px 0;
+      scroll-margin-top: 72px;
+      transition: background-color var(--duration-slow) var(--ease-out), background var(--duration-slow) var(--ease-out);
+    }
+    .section.gray { background: var(--surface); }
+    .section.blue { background: linear-gradient(180deg, #fff, var(--blue-soft)); }
+    #ai-projects {
+      padding-top: 100px;
+    }
+    #ai-projects .section-head {
+      max-width: 880px;
+      margin-bottom: 44px;
+    }
+    #ai-projects .ai-case {
+      align-items: stretch;
+    }
+    .section-head {
+      max-width: 980px;
+      margin: 0 auto 56px;
+      text-align: center;
+    }
+    .section-head.left {
+      max-width: none;
+      display: grid;
+      grid-template-columns: .72fr 1fr;
+      gap: clamp(32px, 6vw, 82px);
+      text-align: left;
+      align-items: end;
+    }
+    .section-label {
+      color: var(--text);
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .section-title {
+      margin-top: 12px;
+      font-size: clamp(38px, 3.8vw, 52px);
+      line-height: 1.02;
+      letter-spacing: -.055em;
+      font-weight: 720;
+    }
+    .section-copy {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 19px;
+      line-height: 1.62;
+      letter-spacing: -.015em;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .feature {
+      min-height: 300px;
+      padding: 34px;
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: 0 1px 0 var(--line-soft);
+      transition: transform var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
+    }
+    .feature:hover,
+    .soft-card:hover,
+    .project-row:hover,
+    .archive-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+    .feature-num {
+      color: var(--blue);
+      font-size: 38px;
+      line-height: 1;
+      letter-spacing: -.04em;
+      font-weight: 700;
+    }
+    .feature h3,
+    .soft-card h3,
+    .project-row h3,
+    .archive-card h3 {
+      margin-top: 26px;
+      font-size: 24px;
+      line-height: 1.2;
+      letter-spacing: -.035em;
+      font-weight: 680;
+    }
+    .feature p,
+    .soft-card p,
+    .project-row p,
+    .archive-card p {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .education-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 44px;
+      align-items: start;
+    }
+    .education-lead {
+      max-width: 920px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .education-lead h2 {
+      font-size: clamp(38px, 3.8vw, 52px);
+      line-height: 1.03;
+      letter-spacing: -.055em;
+    }
+    .education-lead p {
+      max-width: 760px;
+      margin-top: 18px;
+      margin-right: auto;
+      margin-left: auto;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.65;
+    }
+    .timeline {
+      width: min(980px, 100%);
+      margin: 0 auto;
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--line);
+    }
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 130px minmax(0,1fr);
+      gap: 28px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .timeline-row .time {
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .timeline-row strong {
+      display: block;
+      font-size: 21px;
+      line-height: 1.35;
+      letter-spacing: -.02em;
+    }
+    .timeline-row span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .capability-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .soft-card {
+      padding: 34px;
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: 0 1px 0 var(--line-soft);
+      transition: transform var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
+    }
+    .soft-card .mini {
+      display: inline-flex;
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .flow {
+      margin-top: 32px;
+      padding: 30px;
+      border-radius: var(--radius);
+      background: #fff;
+    }
+    .flow h3 {
+      font-size: 24px;
+      letter-spacing: -.03em;
+    }
+    .flow-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .flow-line span {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .flow-line span:not(:last-child)::after {
+      content: "";
+      width: 22px;
+      height: 1px;
+      background: rgba(0,0,0,.18);
+    }
+
+    .ai-case {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: clamp(38px, 5vw, 72px);
+      align-items: stretch;
+      padding: 72px 0;
+      border-top: 1px solid var(--line);
+    }
+    .ai-case:first-of-type { border-top: 0; }
+    .ai-case.is-reversed .case-copy { order: 2; }
+    .workflow-story {
+      align-items: start;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+    .case-copy {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .workflow-copy {
+      justify-content: flex-start;
+      padding-bottom: 0;
+    }
+    .workflow-text-steps {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0 22px;
+      margin-top: 28px;
+    }
+    .workflow-text-step {
+      display: grid;
+      grid-template-columns: 34px minmax(0, 1fr);
+      gap: 12px;
+      padding: 16px 0;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      transition: color var(--duration-normal) var(--ease-out), transform var(--duration-normal) var(--ease-out);
+    }
+    .workflow-text-step b {
+      color: var(--blue);
+      font-size: 14px;
+    }
+    .workflow-text-step strong {
+      display: block;
+      color: inherit;
+      font-size: 17px;
+      letter-spacing: -.025em;
+      transition: color var(--duration-normal) var(--ease-out), font-weight var(--duration-normal) var(--ease-out);
+    }
+    .workflow-text-step span {
+      display: block;
+      margin-top: 6px;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+    .workflow-text-step.is-active {
+      color: var(--text);
+      transform: translateX(4px);
+    }
+    .workflow-text-step.is-active strong { font-weight: 800; }
+    .case-copy .case-label {
+      color: var(--muted-2);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .case-copy h3 {
+      margin-top: 12px;
+      font-size: clamp(34px, 4.6vw, 58px);
+      line-height: 1.03;
+      letter-spacing: -.055em;
+    }
+    .case-copy h3.roomy-title {
+      line-height: 1.14;
+      letter-spacing: -.045em;
+    }
+    .case-copy p {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.68;
+    }
+    .point-list {
+      display: grid;
+      gap: 10px;
+      margin: 22px 0 0;
+      padding: 0;
+      list-style: none;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.62;
+    }
+    .point-list li {
+      position: relative;
+      padding-left: 20px;
+    }
+    .point-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .75em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--blue);
+    }
+    .case-visual {
+      height: 100%;
+      min-height: 360px;
+      display: grid;
+      place-items: center;
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+      overflow: hidden;
+    }
+    .case-visual.clean-visual {
+      height: 100%;
+      min-height: auto;
+      display: grid;
+      align-items: stretch;
+      border-radius: 0;
+      background: transparent;
+      overflow: visible;
+    }
+    .workflow-sticky {
+      position: sticky;
+      top: 96px;
+      align-self: stretch;
+      min-height: 0;
+      background: linear-gradient(180deg, #f8fbff, var(--surface));
+    }
+    .flow-visual {
+      width: min(520px, 100%);
+      padding: 34px;
+    }
+    .flow-step {
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 18px;
+      align-items: center;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .flow-step:last-child { border-bottom: 0; }
+    .flow-step b {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--blue);
+      background: #fff;
+    }
+    .flow-step span {
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .agent-flow {
+      width: 100%;
+      height: 100%;
+      max-width: 440px;
+      display: grid;
+      grid-template-rows: auto repeat(8, minmax(0, 1fr));
+      align-content: stretch;
+      justify-self: center;
+      align-self: center;
+      padding: clamp(28px, 4vw, 44px);
+    }
+    .agent-flow-title {
+      color: var(--muted-2);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .agent-node {
+      position: relative;
+      isolation: isolate;
+      display: grid;
+      grid-template-columns: 38px minmax(0, 1fr);
+      gap: 14px;
+      align-items: center;
+      min-height: 56px;
+      padding: 10px 0;
+      color: var(--muted);
+      transition: color var(--duration-normal) var(--ease-out), transform var(--duration-normal) var(--ease-out);
+    }
+    .agent-node::before {
+      content: "";
+      position: absolute;
+      z-index: 0;
+      left: 19px;
+      top: calc(50% + 19px);
+      bottom: calc(-50% + 19px);
+      width: 1px;
+      background: #d6d6db;
+      transition: background var(--duration-normal) var(--ease-out);
+    }
+    .agent-node:last-child::before { display: none; }
+    .agent-node b {
+      position: relative;
+      z-index: 2;
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--muted-2);
+      background: #fff;
+      box-shadow: 0 1px 0 var(--line-soft);
+      transition: color var(--duration-normal) var(--ease-out), background var(--duration-normal) var(--ease-out), transform var(--duration-normal) var(--ease-out);
+    }
+    .agent-node span {
+      position: relative;
+      z-index: 1;
+      font-weight: 700;
+      letter-spacing: -.02em;
+    }
+    .agent-node.is-active,
+    .agent-node.is-complete {
+      color: var(--text);
+    }
+    .agent-node.is-active {
+      transform: translateX(4px);
+    }
+    .agent-node.is-active b {
+      color: #fff;
+      background: var(--blue);
+      transform: scale(1.06);
+    }
+    .agent-node.is-complete b {
+      color: var(--blue);
+      background: var(--blue-soft);
+    }
+    .agent-node.is-complete::before,
+    .agent-node.is-active::before {
+      background: var(--blue);
+    }
+    .dify-visual {
+      width: min(580px, 100%);
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      padding: 28px;
+    }
+    .clean-visual .dify-visual {
+      width: 100%;
+      height: 100%;
+      gap: 0 34px;
+      grid-template-rows: repeat(2, minmax(0, 1fr));
+      padding: 0;
+    }
+    .dify-block {
+      min-height: 176px;
+      padding: 22px;
+      border-radius: 22px;
+      background: #fff;
+      box-shadow: 0 1px 0 var(--line-soft);
+      animation: promptFloat 5.2s var(--ease-out) infinite alternate;
+    }
+    .clean-visual .dify-block {
+      min-height: auto;
+      padding: 0 0 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      border-bottom: 1px solid var(--line);
+      animation: none;
+    }
+    .clean-visual .dify-block:nth-last-child(-n+2) { border-bottom: 0; }
+    .dify-block:nth-child(2) { animation-duration: 5.8s; animation-delay: .3s; }
+    .dify-block:nth-child(3) { animation-duration: 4.8s; animation-delay: .15s; }
+    .dify-block:nth-child(4) { animation-duration: 6.1s; animation-delay: .45s; }
+    @keyframes promptFloat {
+      from { transform: translateY(0); }
+      to { transform: translateY(-7px); }
+    }
+    .dify-block b {
+      color: var(--blue);
+      font-size: 13px;
+    }
+    .dify-block strong {
+      display: block;
+      margin-top: 16px;
+      font-size: 20px;
+      line-height: 1.25;
+      letter-spacing: -.025em;
+    }
+    .dify-block span {
+      display: block;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .film-visual {
+      width: min(560px, 100%);
+      height: 100%;
+      display: grid;
+      align-content: center;
+      padding: 34px;
+    }
+    .film-image-visual {
+      width: min(620px, 100%);
+      height: 100%;
+      display: grid;
+      place-items: center;
+      padding: 0;
+      border-radius: 34px;
+      overflow: hidden;
+      background: var(--surface);
+    }
+    .film-image-visual img {
+      width: 100%;
+      height: 100%;
+      min-height: 360px;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      transform: scale(1.035);
+      transition: transform var(--duration-slow) var(--ease-out);
+    }
+    .film-image-visual.is-visible img {
+      transform: scale(1);
+    }
+    .film-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    .film-frame {
+      min-height: clamp(138px, 13vw, 180px);
+      border-radius: 18px;
+      background: linear-gradient(180deg, #dfe8f4, #fff);
+    }
+    .film-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .film-meta span {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #fff;
+    }
+    .film-timeline {
+      position: relative;
+      margin-top: 28px;
+      padding-top: 28px;
+    }
+    .film-track {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 1px;
+      background: #d6d6db;
+      overflow: hidden;
+    }
+    .film-track::after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 100%;
+      background: var(--blue);
+      transition: width var(--duration-slow) var(--ease-out);
+    }
+    .film-visual.is-visible .film-track::after { width: 100%; }
+    .film-nodes {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .film-node {
+      position: relative;
+      padding: 18px;
+      border-radius: 20px;
+      color: var(--muted);
+      background: #fff;
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity var(--duration-normal) var(--ease-out), transform var(--duration-normal) var(--ease-out), color var(--duration-normal) var(--ease-out);
+      transition-delay: var(--film-delay, 0ms);
+    }
+    .film-node::before {
+      content: "";
+      position: absolute;
+      top: -34px;
+      left: 18px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #c7c7cc;
+      transition: background var(--duration-normal) var(--ease-out), transform var(--duration-normal) var(--ease-out);
+    }
+    .film-visual.is-visible .film-node {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .film-visual.is-visible .film-node::before {
+      background: var(--blue);
+      transform: scale(1.12);
+    }
+    .film-node strong {
+      display: block;
+      color: var(--text);
+      font-size: 15px;
+      letter-spacing: -.02em;
+    }
+    .film-node span {
+      display: block;
+      margin-top: 8px;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .project-list {
+      display: grid;
+      gap: 18px;
+    }
+    .project-row {
+      display: grid;
+      grid-template-columns: 220px minmax(0,1fr) auto;
+      gap: 26px;
+      align-items: center;
+      padding: 18px;
+      border-radius: var(--radius);
+      background: var(--surface);
+      transition: transform var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
+    }
+    .project-row > img,
+    .archive-card > img,
+    .open-lightbox img {
+      transform: scale(1.04);
+      transition: transform var(--duration-slow) var(--ease-out);
+    }
+    .project-row.is-visible > img,
+    .archive-card.is-visible > img,
+    .archive-card.is-visible .open-lightbox img {
+      transform: scale(1);
+    }
+    .project-row:hover > img,
+    .archive-card:hover > img,
+    .archive-card:hover .open-lightbox img {
+      transform: scale(1.02);
+    }
+    .project-row img {
+      width: 220px;
+      aspect-ratio: 16 / 10;
+      border-radius: 20px;
+      object-fit: cover;
+      background: #e9e9ee;
+    }
+    .project-row h3 { margin-top: 0; }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .tags span,
+    .tool-tags span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 0 11px;
+      border-radius: 999px;
+      color: var(--muted);
+      background: #fff;
+      font-size: 13px;
+    }
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--blue);
+      font-weight: 650;
+      white-space: nowrap;
+      transition: color var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+    }
+    .project-link::after,
+    .archive-link::after {
+      content: "↗";
+      display: inline-block;
+      transition: transform var(--duration-fast) var(--ease-out);
+    }
+    .project-row:hover .project-link,
+    .archive-card:hover .archive-link { transform: translateX(4px); }
+    .project-row:hover .project-link::after,
+    .archive-card:hover .archive-link::after { transform: translate(4px, -2px); }
+
+    .org-grid,
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .org-grid strong {
+      color: var(--text);
+      font-weight: 800;
+    }
+    .org-grid .soft-card p,
+    .org-grid .point-list {
+      font-size: 17px;
+      line-height: 1.76;
+    }
+    .tool-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .tool-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 22px;
+    }
+
+    .archive-controls {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: -20px 0 36px;
+    }
+    .filter-btn {
+      min-height: 36px;
+      padding: 0 14px;
+      border: 0;
+      border-radius: 999px;
+      color: var(--muted);
+      background: #fff;
+      cursor: pointer;
+      transition: color .2s ease, background .2s ease;
+    }
+    .filter-btn.is-active,
+    .filter-btn:hover {
+      color: var(--blue);
+      background: var(--blue-soft);
+    }
+    .archive-grid {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 4px 2px 20px;
+      scroll-snap-type: x proximity;
+      scrollbar-width: thin;
+    }
+    .archive-grid.is-filtering { pointer-events: none; }
+    .archive-card {
+      flex: 0 0 min(280px, calc((100% - 48px) / 4));
+      scroll-snap-align: start;
+      overflow: hidden;
+      border-radius: 24px;
+      background: #fff;
+      transition: opacity var(--duration-normal) var(--ease-out), transform var(--duration-normal) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
+    }
+    .archive-card.is-filtered-out {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    .archive-card[hidden] { display: none; }
+    .archive-card img {
+      width: 100%;
+      aspect-ratio: 16 / 11;
+      object-fit: cover;
+      background: #e9e9ee;
+    }
+    .archive-body { padding: 20px; }
+    .archive-card h3 {
+      margin-top: 10px;
+      font-size: 20px;
+    }
+    .archive-card p {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .archive-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 14px;
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 650;
+      transition: transform var(--duration-fast) var(--ease-out);
+    }
+    .open-lightbox {
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .contact-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, .55fr);
+      gap: 24px;
+      align-items: stretch;
+      padding: clamp(32px, 6vw, 70px);
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+    }
+    .contact-panel h2 {
+      font-size: clamp(38px, 3.8vw, 52px);
+      line-height: 1.03;
+      letter-spacing: -.055em;
+    }
+    .contact-panel p {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.62;
+    }
+    .contact-list {
+      display: grid;
+      gap: 12px;
+      align-content: center;
+    }
+    .contact-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .contact-line strong { color: var(--text); }
+
+    .footer {
+      padding: 32px 0;
+      color: var(--muted-2);
+      background: var(--white);
+      font-size: 13px;
+    }
+    .footer .wrap {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .back-top {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 700;
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--white);
+      background: rgba(29,29,31,.85);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity .2s ease, transform .2s ease;
+    }
+    .back-top.is-visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1300;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(255,255,255,.86);
+      backdrop-filter: blur(20px);
+    }
+    .lightbox.is-open { display: flex; }
+    .lightbox-panel {
+      width: min(1120px, 100%);
+      max-height: 90svh;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 320px;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+    .lightbox-img {
+      width: 100%;
+      height: 100%;
+      max-height: 90svh;
+      object-fit: contain;
+      background: var(--surface);
+    }
+    .lightbox-copy { padding: 28px; }
+    .lightbox-copy h3 {
+      font-size: 30px;
+      line-height: 1.08;
+      letter-spacing: -.04em;
+    }
+    .lightbox-copy p {
+      margin-top: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .lightbox-close {
+      position: fixed;
+      top: 18px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 50%;
+      color: var(--text);
+      background: rgba(245,245,247,.9);
+      cursor: pointer;
+    }
+
+    @keyframes navEnter {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes heroFadeUp {
+      from { opacity: 0; transform: translateY(32px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes heroVisualIn {
+      from { opacity: 0; transform: translateY(24px) scale(.965); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .hero-kicker,
+    .hero h1,
+    .hero-subtitle,
+    .hero-desc,
+    .hero-meta,
+    .hero-actions,
+    .hero-portrait {
+      opacity: 0;
+      will-change: transform, opacity;
+      animation: heroFadeUp var(--duration-slow) var(--ease-out) forwards;
+    }
+    .hero h1 {
+      animation-delay: .05s;
+      clip-path: inset(0 0 100% 0);
+      animation-name: heroTitleReveal;
+    }
+    .hero-subtitle { animation-delay: .15s; }
+    .hero-desc { animation-delay: .25s; }
+    .hero-meta { animation-delay: .3s; }
+    .hero-actions { animation-delay: .35s; }
+    .hero-portrait {
+      animation-name: heroVisualIn;
+      animation-delay: .4s;
+    }
+    @keyframes heroTitleReveal {
+      from { opacity: 0; transform: translateY(32px); clip-path: inset(0 0 100% 0); }
+      to { opacity: 1; transform: translateY(0); clip-path: inset(0 0 0 0); }
+    }
+
+    .motion-ready .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity var(--duration-normal) var(--ease-out), transform var(--duration-normal) var(--ease-out);
+      transition-delay: var(--stagger-delay, 0ms);
+      will-change: opacity, transform;
+    }
+    .motion-ready .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .motion-ready .section-head.reveal {
+      opacity: 1;
+      transform: none;
+    }
+    .motion-ready .section-head.reveal .section-label,
+    .motion-ready .section-head.reveal .section-copy,
+    .motion-ready .education-lead.reveal .section-label,
+    .motion-ready .education-lead.reveal p {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity var(--duration-normal) var(--ease-out), transform var(--duration-normal) var(--ease-out);
+    }
+    .motion-ready .section-head.reveal.is-visible .section-label,
+    .motion-ready .section-head.reveal.is-visible .section-copy,
+    .motion-ready .education-lead.reveal.is-visible .section-label,
+    .motion-ready .education-lead.reveal.is-visible p {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .motion-ready .section-head.reveal .section-copy,
+    .motion-ready .education-lead.reveal p { transition-delay: 120ms; }
+    .motion-ready .section-title,
+    .motion-ready .education-lead h2,
+    .motion-ready .contact-panel h2 {
+      clip-path: inset(0 0 100% 0);
+      transform: translateY(28px);
+      opacity: 0;
+      transition: clip-path var(--duration-slow) var(--ease-out), transform var(--duration-slow) var(--ease-out), opacity var(--duration-normal) var(--ease-out);
+    }
+    .motion-ready .section.is-visible .section-title,
+    .motion-ready .education-lead.reveal.is-visible h2,
+    .motion-ready .contact-panel.reveal.is-visible h2 {
+      clip-path: inset(0 0 0 0);
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    @media (max-width: 980px) {
+      .nav-links,
+      .nav-download { display: none; }
+      .mobile-toggle { display: grid; place-items: center; }
+      .nav-links.is-open {
+        position: fixed;
+        inset: 56px 12px auto 12px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 4px;
+        padding: 12px;
+        border-radius: 20px;
+        background: rgba(255,255,255,.95);
+        box-shadow: var(--shadow);
+        white-space: normal;
+      }
+      .hero-grid,
+      .section-head.left,
+      .education-layout,
+      .ai-case,
+      .project-row,
+      .contact-panel {
+        grid-template-columns: 1fr;
+      }
+      .education-lead { position: static; }
+      .ai-case.is-reversed .case-copy { order: 0; }
+      .case-copy,
+      .case-visual,
+      .agent-flow,
+      .clean-visual .dify-visual,
+      .film-visual {
+        height: auto;
+      }
+      .case-copy { justify-content: flex-start; }
+      .feature-grid,
+      .tool-grid,
+      .archive-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); overflow: visible; padding-bottom: 0; }
+      .project-row img {
+        width: 100%;
+        max-width: 420px;
+      }
+      .project-link { justify-self: start; }
+      .workflow-story { grid-template-columns: 1fr; }
+      .workflow-sticky {
+        position: static;
+        min-height: auto;
+        height: auto;
+      }
+      .workflow-text-step.is-active,
+      .agent-node.is-active {
+        transform: none;
+      }
+      .agent-flow { padding: 26px; }
+      .agent-node { padding: 13px 0; }
+    }
+
+    @media (min-width: 981px) {
+      .section-head:not(.left) .section-title,
+      .education-lead h2,
+      .contact-panel h2 {
+        white-space: nowrap;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .site-header { height: 52px; }
+      .nav-wrap {
+        width: calc(100vw - 32px);
+        height: 52px;
+      }
+      .brand { font-size: 12px; letter-spacing: .06em; }
+      .brand-mark { width: 28px; height: 28px; }
+      .wrap {
+        width: calc(100vw - 32px);
+        max-width: calc(100vw - 32px);
+      }
+      .hero {
+        min-height: auto;
+        padding: 84px 0 54px;
+      }
+      .hero-grid {
+        gap: 34px;
+        align-items: start;
+      }
+      .hero-grid,
+      .hero-copy,
+      .hero-portrait,
+      .portrait-shell,
+      .model-rail,
+      .section-head,
+      .section-head.left,
+      .education-layout,
+      .ai-case,
+      .case-visual,
+      .project-row,
+      .contact-panel,
+      .archive-grid {
+        min-width: 0;
+        max-width: 100%;
+      }
+      .hero h1 {
+        font-size: clamp(52px, 17vw, 68px);
+        letter-spacing: -.06em;
+      }
+      .hero-subtitle {
+        max-width: 100%;
+        font-size: clamp(23px, 7vw, 28px);
+        line-height: 1.16;
+        letter-spacing: -.035em;
+        word-break: break-word;
+      }
+      .hero-desc,
+      .section-copy,
+      .case-copy p,
+      .contact-panel p {
+        font-size: 16px;
+        overflow-wrap: anywhere;
+      }
+      .hero-meta {
+        display: grid;
+        gap: 6px;
+        font-size: 14px;
+      }
+      .hero-meta span { padding-right: 0; }
+      .hero-meta span::after { display: none; }
+      .portrait-shell img {
+        aspect-ratio: 4 / 4.4;
+        object-position: center 18%;
+      }
+      .model-rail span {
+        font-size: 12px;
+        padding: 7px 10px;
+      }
+      .section { padding: 76px 0; }
+      .section-head { margin-bottom: 34px; }
+      .section-title,
+      .education-lead h2,
+      .contact-panel h2 {
+        font-size: clamp(36px, 11vw, 52px);
+        white-space: normal;
+      }
+      .feature-grid,
+      .capability-grid,
+      .org-grid,
+      .tool-grid,
+      .archive-grid,
+      .dify-visual,
+      .lightbox-panel {
+        grid-template-columns: 1fr;
+      }
+      .archive-card { flex-basis: auto; }
+      .feature,
+      .soft-card {
+        min-height: auto;
+        padding: 26px;
+      }
+      .timeline-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .flow { padding: 22px; }
+      .flow-line {
+        display: grid;
+        align-items: stretch;
+      }
+      .flow-line span:not(:last-child)::after { display: none; }
+      .case-visual { min-height: auto; }
+      .flow-visual,
+      .dify-visual,
+      .film-visual,
+      .film-image-visual {
+        padding: 20px;
+      }
+      .film-image-visual {
+        padding: 0;
+        border-radius: 24px;
+      }
+      .film-image-visual img {
+        min-height: 240px;
+      }
+      .workflow-text-steps {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .workflow-text-step {
+        grid-template-columns: 36px minmax(0, 1fr);
+        gap: 12px;
+        padding: 14px 0;
+      }
+      .workflow-text-step strong { font-size: 17px; }
+      .agent-flow { padding: 20px; }
+      .agent-node {
+        grid-template-columns: 34px minmax(0, 1fr);
+        gap: 12px;
+        padding: 12px 0;
+      }
+      .agent-node b {
+        width: 34px;
+        height: 34px;
+      }
+      .agent-node::before {
+        left: 16px;
+        top: 34px;
+        bottom: -14px;
+      }
+      .dify-block {
+        min-height: auto;
+        animation: none;
+      }
+      .film-strip { grid-template-columns: repeat(2, 1fr); }
+      .film-frame { min-height: 130px; }
+      .film-timeline { padding-top: 0; }
+      .film-track { display: none; }
+      .film-nodes { grid-template-columns: 1fr; }
+      .film-node::before { display: none; }
+      .project-row { padding: 14px; }
+      .project-row img { max-width: none; }
+      .contact-panel { padding: 28px; }
+      .contact-line { display: grid; gap: 4px; }
+      .footer .wrap { flex-direction: column; }
+      .lightbox-copy { border-top: 1px solid var(--line); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .001ms !important;
+      }
+      .hero-kicker,
+      .hero h1,
+      .hero-subtitle,
+      .hero-desc,
+      .hero-meta,
+      .hero-actions,
+      .hero-portrait,
+      .motion-ready .reveal,
+      .motion-ready .section-title,
+      .motion-ready .education-lead h2,
+      .motion-ready .contact-panel h2,
+      .motion-ready .section-head.reveal .section-label,
+      .motion-ready .section-head.reveal .section-copy,
+      .motion-ready .education-lead.reveal .section-label,
+      .motion-ready .education-lead.reveal p,
+      .film-node {
+        opacity: 1 !important;
+        transform: none !important;
+        clip-path: none !important;
+      }
+      .dify-block { animation: none !important; }
+      .film-track::after { width: 100% !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+
+  <header class="site-header" id="siteHeader">
+    <div class="nav-wrap">
+      <a class="brand" href="#home" aria-label="回到首页">
+        <span class="brand-mark">XY</span>
+        <span>HUANG XIONGYE</span>
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="主导航">
+        <a href="#advantage">优势摘要</a>
+        <a href="#education">教育背景</a>
+        <a href="#ai-capabilities">AI能力</a>
+        <a href="#ai-projects">AI项目</a>
+        <a href="#representative">代表项目</a>
+        <a href="#organization">组织实践</a>
+        <a href="#tools">工具栈</a>
+        <a href="#more-works">More Works</a>
+        <a href="#contact">联系我</a>
+      </nav>
+      <a class="nav-download" href="assets/huang-xiongye-ai-product-agent-resume.docx" download>简历下载</a>
+      <button class="mobile-toggle" id="mobileToggle" type="button" aria-label="打开导航" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div class="hero-copy reveal">
+          <p class="hero-kicker">AI Product Operations / Agent Operations</p>
+          <h1>黄雄业</h1>
+          <p class="hero-subtitle"><span>AI Product Operations × Agent Workflow</span><span>× AIGC Creation</span></p>
+          <p class="hero-desc">厦门大学新闻传播学院广告学本科生，面向 AI 产品运营、Agent 产品运营与 AIGC 内容产品方向。关注如何把 AI 能力转译为用户场景、产品功能、交互路径、内容运营与反馈迭代。</p>
+          <div class="hero-meta" aria-label="个人信息">
+            <div class="meta-row">
+              <span>厦门大学新闻传播学院 · 广告学 2024级本科生 · 预备党员</span>
+            </div>
+            <div class="meta-row">
+              <span>AI 产品运营 / Agent 产品运营 / AIGC 内容产品 / 产品运营实习</span>
+            </div>
+            <div class="meta-row">
+              <span>3091595176@qq.com</span>
+              <span>18078105236</span>
+            </div>
+          </div>
+          <div class="hero-actions">
+            <a class="btn primary" href="#ai-projects">查看 AI 项目</a>
+            <a class="btn secondary" href="#ai-capabilities">查看能力结构</a>
+            <a class="btn" href="#contact">联系我</a>
+            <a class="btn" href="assets/huang-xiongye-ai-product-agent-resume.docx" download>下载简历</a>
+          </div>
+        </div>
+        <div class="hero-portrait reveal">
+          <div class="portrait-shell">
+            <img src="assets/profile.webp" alt="黄雄业个人肖像" width="900" height="1125">
+          </div>
+          <div class="model-rail" aria-label="AI 工具与工作流标签">
+            <span>obsidian</span>
+            <span>Codex</span>
+            <span>Claude</span>
+            <span>GPT</span>
+            <span>Gemini</span>
+            <span>AIGC 视频</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section gray" id="advantage">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="section-label">优势摘要</p>
+          <h2 class="section-title">我的优势，指向 AI 产品运营。</h2>
+        </header>
+        <div class="feature-grid">
+          <article class="feature reveal">
+            <div class="feature-num">01</div>
+            <h3>AI 产品与 Agent 产品运营导向</h3>
+            <p>广告学专业背景 + 校园公共传播实战 + AI 原型、网页、视频项目线，能够把 AI 能力转译为用户场景、产品功能、交互路径、内容运营与反馈迭代。</p>
+          </article>
+          <article class="feature reveal">
+            <div class="feature-num">02</div>
+            <h3>理解 LLM 与 Agent 基本机制</h3>
+            <p>熟悉 Prompt、上下文窗口、工具调用、任务分解、记忆/检索、规划执行、评估迭代等核心概念，并能用项目实践解释其产品价值。</p>
+          </article>
+          <article class="feature reveal">
+            <div class="feature-num">03</div>
+            <h3>具备第一手 AI 工作流实践</h3>
+            <p>围绕 Prompt Engineering、Context Engineering、Harness Engineering 进行多轮实操，用 Codex、Claude、GPT、Gemini 推进网页、小程序、H5、视觉小说与数据叙事项目。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="education">
+      <div class="wrap education-layout">
+        <div class="education-lead reveal">
+          <p class="section-label">教育背景</p>
+          <h2>教育背景与阶段成果。</h2>
+          <p>广告策划、品牌传播、数智化整合营销、数据新闻、Python 与影像制作，构成我理解 AI 产品内容化、场景化与运营化的基础。</p>
+        </div>
+        <div class="timeline reveal">
+          <div class="timeline-row">
+            <div class="time">2024.09 至今</div>
+            <div>
+              <strong>厦门大学｜新闻传播学院 广告学 本科</strong>
+              <span>专业训练：广告策划、活动营销、品牌传播、数智化整合营销、数据新闻、Python、影像制作。</span>
+            </div>
+          </div>
+          <div class="timeline-row">
+            <div class="time">2025</div>
+            <div>
+              <strong>厦门大学新闻传播学院学业二等奖</strong>
+              <span>专业学习基础与持续投入的阶段性成果。</span>
+            </div>
+          </div>
+          <div class="timeline-row">
+            <div class="time">2026</div>
+            <div>
+              <strong>厦门大学新时代公益广告大赛</strong>
+              <span>平面广告一等奖、二等奖、优秀奖。</span>
+            </div>
+          </div>
+          <div class="timeline-row">
+            <div class="time">2026</div>
+            <div>
+              <strong>厦门大学十佳提案大赛「十佳提案奖」</strong>
+              <span>围绕教材漂流与精准匹配平台完成问题发现、方案构建与答辩表达。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section gray" id="ai-capabilities">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="section-label">AI 相关运营能力</p>
+          <h2 class="section-title">从需求理解，到产品化表达。</h2>
+        </header>
+        <div class="capability-grid">
+          <article class="soft-card reveal">
+            <span class="mini">Planning</span>
+            <h3>策划研究</h3>
+            <p>命题拆解、用户洞察、竞品分析、传播主张、活动机制、预算/KPI 与答辩逻辑。代表场景：大广赛、三福年度策划、教材漂流提案。</p>
+          </article>
+          <article class="soft-card reveal">
+            <span class="mini">Agent</span>
+            <h3>LLM / Agent 理解</h3>
+            <p>理解大模型生成逻辑、上下文管理、工具调用、Agent Loop、计划、执行、观察、反思流程，以及多 Agent / 子任务协作的基本机制。</p>
+          </article>
+          <article class="soft-card reveal">
+            <span class="mini">AIGC Video</span>
+            <h3>AI 视频制作</h3>
+            <p>熟悉 Veo、即梦等 AI 视频与图像生成工具的基本工作流，能够围绕传播主题完成概念、脚本、分镜、镜头语言、提示词到后期整合。</p>
+          </article>
+          <article class="soft-card reveal">
+            <span class="mini">Operation</span>
+            <h3>AI 产品运营</h3>
+            <p>围绕用户痛点、使用场景、功能说明、内容模板、交互路径、PRD、KPI 与反馈闭环组织产品化表达，适配 AI 产品 / Agent 产品运营实习。</p>
+          </article>
+        </div>
+        <div class="flow reveal">
+          <h3>AI 产品运营表达链路</h3>
+          <div class="flow-line" aria-label="AI 产品运营表达链路">
+            <span>用户痛点</span>
+            <span>使用场景</span>
+            <span>功能说明</span>
+            <span>内容模板</span>
+            <span>交互路径</span>
+            <span>PRD</span>
+            <span>KPI</span>
+            <span>反馈闭环</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ai-projects">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="section-label">AI 项目与作品经历</p>
+          <h2 class="section-title">重点项目，前置 AI 与 Agent。</h2>
+        </header>
+
+        <article class="ai-case workflow-story reveal" data-workflow-story>
+          <div class="case-copy workflow-copy">
+            <p class="case-label">Codex / Claude + GPT / Gemini · 2025 至今</p>
+            <h3>网页、小程序与 Agent 工作流实践</h3>
+            <p>使用 <strong>AI 编程与多模型协作</strong>完成多个<strong>网页、H5 与小程序原型</strong>，包括<strong>阿里云 × 千问智能工坊网页</strong>、三福「小福龙」换装 H5、厦门美食地图、数据新闻 / 叙事网页、视觉小说游戏等。</p>
+            <ul class="point-list">
+              <li>熟悉 <strong>PRD 拆解、任务列表、文件读取、代码生成、Bug 定位、UI 复盘、素材接入到部署交付</strong>。</li>
+              <li>能够以<strong>产品运营视角</strong>管理 AI 协作过程，让模型输出服务于<strong>明确场景与交付结果</strong>。</li>
+            </ul>
+            <div class="workflow-text-steps" aria-label="Agent 工作流步骤说明">
+              <div class="workflow-text-step is-active" data-workflow-text="0"><b>01</b><div><strong>PRD 拆解</strong><span>把需求目标、用户场景和交付边界先拆清楚。</span></div></div>
+              <div class="workflow-text-step" data-workflow-text="1"><b>02</b><div><strong>任务列表</strong><span>将页面、功能、素材和验证动作转化为可执行任务。</span></div></div>
+              <div class="workflow-text-step" data-workflow-text="2"><b>03</b><div><strong>文件读取</strong><span>理解既有结构、资源路径与页面逻辑，再进入修改。</span></div></div>
+              <div class="workflow-text-step" data-workflow-text="3"><b>04</b><div><strong>代码生成</strong><span>用 Codex、Claude、GPT、Gemini 协同完成原型和页面实现。</span></div></div>
+              <div class="workflow-text-step" data-workflow-text="4"><b>05</b><div><strong>Bug 定位</strong><span>通过报错、截图和局部验证定位问题，不盲目重写。</span></div></div>
+              <div class="workflow-text-step" data-workflow-text="5"><b>06</b><div><strong>UI 复盘</strong><span>检查排版、移动端、按钮状态和阅读层级。</span></div></div>
+              <div class="workflow-text-step" data-workflow-text="6"><b>07</b><div><strong>素材接入</strong><span>统一图片命名、压缩和路径，保证展示稳定。</span></div></div>
+              <div class="workflow-text-step" data-workflow-text="7"><b>08</b><div><strong>部署交付</strong><span>完成可访问页面、链接和最终说明。</span></div></div>
+            </div>
+          </div>
+          <div class="case-visual workflow-sticky" aria-label="Agent 工作流示意">
+            <div class="agent-flow" data-agent-flow>
+              <p class="agent-flow-title">Agent Workflow</p>
+              <div class="agent-node is-active" data-workflow-node="0"><b>01</b><span>PRD 拆解</span></div>
+              <div class="agent-node" data-workflow-node="1"><b>02</b><span>任务列表</span></div>
+              <div class="agent-node" data-workflow-node="2"><b>03</b><span>文件读取</span></div>
+              <div class="agent-node" data-workflow-node="3"><b>04</b><span>代码生成</span></div>
+              <div class="agent-node" data-workflow-node="4"><b>05</b><span>Bug 定位</span></div>
+              <div class="agent-node" data-workflow-node="5"><b>06</b><span>UI 复盘</span></div>
+              <div class="agent-node" data-workflow-node="6"><b>07</b><span>素材接入</span></div>
+              <div class="agent-node" data-workflow-node="7"><b>08</b><span>部署交付</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="ai-case reveal">
+          <div class="case-copy">
+            <p class="case-label">AI Skill / Agent Product Practice</p>
+            <h3 class="roomy-title">Dify 知识蒸馏与垂直场景 Skill</h3>
+            <p>具备<strong>垂直场景 AI Skill 与智能体搭建经验</strong>，能够将课堂资料、教师授课逻辑、竞赛案例和行业方法论利用 <strong>Dify 转化为可复用的知识工作流</strong>。</p>
+            <ul class="point-list">
+              <li><strong>课程学习 Skill</strong>：基于课程课件与课堂内容，帮助同学完成<strong>知识点解释、复习提纲、重点梳理与个性化问答</strong>。</li>
+              <li><strong>大广赛制作 Skill</strong>：基于近五年获奖作品与命题策略单，沉淀<strong>品牌命题分析、消费者洞察、传播主张、策划案结构、创意发散与视觉提示词生成流程</strong>。</li>
+            </ul>
+          </div>
+          <div class="case-visual clean-visual" aria-label="Dify 知识工作流">
+            <div class="dify-visual">
+              <div class="dify-block"><b>Input</b><strong>课件与案例</strong><span>课堂资料、教师逻辑、竞赛案例、行业方法论。</span></div>
+              <div class="dify-block"><b>Context</b><strong>授课逻辑与命题策略</strong><span>教师授课逻辑、品牌命题策略单、近年获奖作品。</span></div>
+              <div class="dify-block"><b>Workflow</b><strong>知识蒸馏</strong><span>提问模板、任务分解、检索问答与流程沉淀。</span></div>
+              <div class="dify-block"><b>Output</b><strong>可复用 Skill</strong><span>解释、提纲、策划结构、视觉提示词。</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="ai-case reveal">
+          <div class="case-copy">
+            <p class="case-label">AIGC Video Production · 60min Film Project</p>
+            <h3>《囊萤星火》<br>AI 电影制作经历</h3>
+            <p>参与制作厦门大学福建第一个党支部建立百年 <strong>AI 60min 大电影《囊萤星火》</strong>，接触<strong>脚本分解、镜头生成、视觉风格统一、历史叙事包装、素材筛选与后期衔接</strong>等 AIGC 视频生产环节。</p>
+            <ul class="point-list">
+              <li>能够围绕<strong>场景、镜头、运动、光影、人物、时代质感与后期特效</strong>撰写提示词与图片。</li>
+              <li>根据成片效果<strong>持续迭代</strong>，理解 <strong>AI 视频从生成素材到叙事成片</strong>之间的组织流程。</li>
+            </ul>
+          </div>
+          <div class="case-visual" aria-label="AIGC 电影视觉画面">
+            <div class="film-image-visual reveal">
+              <img src="assets/aigc-nangying-closeup.webp" alt="《囊萤星火》AI 电影人物特写画面" loading="lazy" width="1400" height="781">
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section gray" id="representative">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="section-label">代表项目经历</p>
+          <h2 class="section-title">代表项目，是产品化表达的证据。</h2>
+        </header>
+        <div class="project-list">
+          <article class="project-row reveal">
+            <img src="assets/project-qianwen.webp" alt="阿里云 × 千问大模型项目截图" loading="lazy">
+            <div>
+              <h3>阿里云 × 千问大模型｜AI 产品场景化传播与 H5/UI 项目</h3>
+              <p>围绕「问一句，万物开始行动」传播主张，拆解千问、万相、百炼、阿里云底座等产品价值，转译为学习、办公、创意、生活、旅行等高频使用场景。</p>
+              <div class="tags"><span>AI 产品场景</span><span>H5/UI</span><span>品牌传播</span></div>
+            </div>
+            <a class="project-link" href="https://nightair5.github.io/Qianwen-Showcase/" target="_blank" rel="noopener">访问项目</a>
+          </article>
+          <article class="project-row reveal">
+            <img src="assets/project-xiaofulong.webp" alt="三福小福龙换装 H5 项目截图" loading="lazy">
+            <div>
+              <h3>三福 S·FUN「小福龙」年度策划｜AI 互动与 IP 化青年场景营销</h3>
+              <p>以「生活出题，潮趣来搭」为年度概念，设计 IP 形象、H5 换装游戏、AI 生成海报按钮、门店场景、橱窗互动与社交传播机制。</p>
+              <div class="tags"><span>IP 营销</span><span>换装 H5</span><span>AI 海报</span></div>
+            </div>
+            <a class="project-link" href="https://nightair5.github.io/Sanfu-Xiaofulong-Dress-Up2/" target="_blank" rel="noopener">访问项目</a>
+          </article>
+          <article class="project-row reveal">
+            <img src="assets/project-textbook-drift.webp" alt="教材漂流与精准匹配平台项目截图" loading="lazy">
+            <div>
+              <h3>校园模拟提案大赛｜教材漂流与精准匹配平台</h3>
+              <p>围绕教材闲置、信息不对称与校园资源循环问题，构建「回收、匹配、流转、反馈」平台化方案，参与问题界定、用户需求梳理、机制设计、风险控制与答辩材料准备。</p>
+              <div class="tags"><span>十佳提案奖</span><span>平台机制</span><span>校园产品提案</span></div>
+            </div>
+            <a class="project-link" href="https://nightair5.github.io/refactored-octo-invention/" target="_blank" rel="noopener">访问项目</a>
+          </article>
+          <article class="project-row reveal">
+            <img src="assets/project-campus-video.webp" alt="学在厦大校园影像项目视觉" loading="lazy">
+            <div>
+              <h3>影像传播与校园公共叙事｜宣传片 / 人物片 / 活动影像</h3>
+              <p>参与协作拍摄厦门大学招生宣传片；独立制作校级「十佳教师」「十佳后勤」人物影片；多次承担嘉庚大讲堂、开学典礼、毕业典礼等重大活动拍摄。</p>
+              <div class="tags"><span>影像叙事</span><span>校园传播</span><span>现场执行</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="organization">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="section-label">组织实践与内容运营</p>
+          <h2 class="section-title">真实协作，训练执行能力。</h2>
+          <p class="section-copy">学生工作、内容运营、校园传播与社会实践，让创意从方案变成可沟通、可组织、可落地的行动。</p>
+        </header>
+        <div class="org-grid">
+          <article class="soft-card reveal">
+            <span class="mini">Campus Organization</span>
+            <h3>校园组织与公共传播</h3>
+            <p><strong>院团总支自律部部长 / 24级广告班组织委员</strong>。参与学院与班级活动组织、<strong>人员协同</strong>、通知传达、<strong>现场执行</strong>和宣传物料整理；曾任班级宣传委员，长期参与<strong>内容创作与活动记录</strong>。</p>
+            <ul class="point-list">
+              <li>参与<strong>学院公众号与校园新闻稿写作</strong>，曾在学校官网发表署名文章。</li>
+              <li>累计<strong>志愿服务约 75 小时</strong>，曾参与 2025 年中国国际广告节志愿活动。</li>
+            </ul>
+          </article>
+          <article class="soft-card reveal">
+            <span class="mini">Content Operations</span>
+            <h3>“男的班”公众号跨界营销</h3>
+            <p>策划并执行<strong>理发店联名合作</strong>与<strong>健身社团体验活动</strong>，将事件营销、公关联动与社群内容生产结合，获得<strong>上千同学关注</strong>，并通过执行数据追踪活动成效。</p>
+            <ul class="point-list">
+              <li>把活动概念拆成<strong>合作方沟通</strong>、社群内容、现场体验与数据观察。</li>
+              <li>在真实校园场景中训练<strong>内容运营、协作推进与反馈复盘</strong>。</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section gray" id="tools">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="section-label">工具栈</p>
+          <h2 class="section-title">工具栈服务于产品运营。</h2>
+          <p class="section-copy">工具不是标签，流程才是重点。它们用于问题拆解、内容生成、原型搭建、视觉表达与交付复盘。</p>
+        </header>
+        <div class="tool-grid">
+          <article class="soft-card reveal">
+            <span class="mini">AI & Agent</span>
+            <h3>AI 与 Agent 工具</h3>
+            <div class="tool-tags">
+              <span>ChatGPT</span><span>Claude</span><span>Gemini</span><span>Codex</span><span>obsidian</span><span>DeepSeek</span><span>千问</span><span>Kimi</span><span>Dify</span><span>即梦</span><span>Veo 类视频生成</span>
+            </div>
+          </article>
+          <article class="soft-card reveal">
+            <span class="mini">Product & Interaction</span>
+            <h3>产品与交互</h3>
+            <div class="tool-tags">
+              <span>PRD</span><span>功能拆解</span><span>信息架构</span><span>H5 原型</span><span>网页叙事</span><span>数据可视化</span><span>HTML/CSS/JS 基础</span><span>PPT 提案</span><span>UI 复盘</span>
+            </div>
+          </article>
+          <article class="soft-card reveal">
+            <span class="mini">Content & Communication</span>
+            <h3>内容与传播</h3>
+            <div class="tool-tags">
+              <span>广告策划</span><span>活动营销</span><span>品牌传播</span><span>公众号内容</span><span>校园公共传播</span><span>影像叙事</span><span>AIGC 视频</span><span>视觉提示词</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="more-works">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="section-label">More Works</p>
+          <h2 class="section-title">综合作品。</h2>
+          <p class="section-copy">这些项目来自此前在广告策划、数据新闻、摄影影像、网页交互与校园传播中的综合实践。</p>
+        </header>
+        <div class="archive-controls reveal" aria-label="作品筛选">
+          <button class="filter-btn is-active" type="button" data-filter="all">All</button>
+          <button class="filter-btn" type="button" data-filter="web">Web / H5</button>
+          <button class="filter-btn" type="button" data-filter="research">Data / Research</button>
+          <button class="filter-btn" type="button" data-filter="photo">Photography</button>
+          <button class="filter-btn" type="button" data-filter="visual">Visual</button>
+        </div>
+        <div class="archive-grid">
+          <article class="archive-card reveal" data-category="web research">
+            <img src="assets/project-operator-dilemma.webp" alt="接线员的困境网页项目" loading="lazy">
+            <div class="archive-body">
+              <p class="section-label">Data Storytelling</p>
+              <h3>接线员的困境</h3>
+              <p>数据新闻与叙事网页，作为公共议题表达训练。</p>
+              <a class="archive-link" href="https://nightair5.github.io/The-dilemma-of-the-operator2/" target="_blank" rel="noopener">访问项目</a>
+            </div>
+          </article>
+          <article class="archive-card reveal" data-category="web">
+            <img src="assets/project-gourmet-map.webp" alt="厦门美食地图项目" loading="lazy">
+            <div class="archive-body">
+              <p class="section-label">Map Interaction</p>
+              <h3>鹭味足迹 / 厦门美食地图</h3>
+              <p>地图交互与城市生活内容整理项目。</p>
+              <a class="archive-link" href="https://nightair5.github.io/Gourmet-Map/" target="_blank" rel="noopener">访问项目</a>
+            </div>
+          </article>
+          <article class="archive-card reveal" data-category="web research">
+            <img src="assets/project-journaliststi.webp" alt="JournalistsTI 项目" loading="lazy">
+            <div class="archive-body">
+              <p class="section-label">Research Web</p>
+              <h3>JournalistsTI</h3>
+              <p>课程研究与网页呈现，保留为综合表达样本。</p>
+              <a class="archive-link" href="https://nightair5.github.io/newsTI/" target="_blank" rel="noopener">访问项目</a>
+            </div>
+          </article>
+          <article class="archive-card reveal" data-category="web visual">
+            <img src="assets/project-tailme.webp" alt="TailMe 项目截图" loading="lazy">
+            <div class="archive-body">
+              <p class="section-label">Interactive Prototype</p>
+              <h3>TailMe</h3>
+              <p>互动网页 / 课程项目。</p>
+              <a class="archive-link" href="https://nightair5.github.io/tailme/" target="_blank" rel="noopener">访问项目</a>
+            </div>
+          </article>
+          <article class="archive-card reveal" data-category="photo">
+            <button type="button" class="open-lightbox" data-img="assets/photo-xiamen-5am.webp" data-title="5am 的厦门" data-desc="主题：清晨城市劳动与公共空间。技法：冷暖对比、远距离观察、环境人物关系。传播价值：用影像保留城市日常背后的秩序与情绪。">
+              <img src="assets/photo-xiamen-5am.webp" alt="5am 的厦门摄影作品" loading="lazy">
+            </button>
+            <div class="archive-body">
+              <p class="section-label">Photography</p>
+              <h3>5am 的厦门</h3>
+              <p>清晨城市劳动与公共空间观察。</p>
+            </div>
+          </article>
+          <article class="archive-card reveal" data-category="photo">
+            <button type="button" class="open-lightbox" data-img="assets/photo-monochrome-sea.webp" data-title="海面黑白电影" data-desc="主题：海面、孤独与观看。技法：低饱和黑白处理、留白构图、横向空间压缩。传播价值：将情绪变成可被停留观看的视觉叙事。">
+              <img src="assets/photo-monochrome-sea.webp" alt="海面黑白电影摄影作品" loading="lazy">
+            </button>
+            <div class="archive-body">
+              <p class="section-label">Photography</p>
+              <h3>海面黑白电影</h3>
+              <p>以低饱和与留白表达海面情绪。</p>
+            </div>
+          </article>
+          <article class="archive-card reveal" data-category="photo">
+            <button type="button" class="open-lightbox" data-img="assets/photo-night-tide.webp" data-title="夜涌" data-desc="主题：夜色中的流动与边界。技法：暗部层次、色温控制、低照度氛围。传播价值：让抽象情绪拥有可感知的现场感。">
+              <img src="assets/photo-night-tide.webp" alt="夜涌摄影作品" loading="lazy">
+            </button>
+            <div class="archive-body">
+              <p class="section-label">Photography</p>
+              <h3>夜涌</h3>
+              <p>低照度氛围与夜间空间练习。</p>
+            </div>
+          </article>
+          <article class="archive-card reveal" data-category="photo visual">
+            <button type="button" class="open-lightbox" data-img="assets/photo-afterglow.webp" data-title="余晖" data-desc="主题：黄昏、人物与停顿。技法：逆光、剪影、暖色高光控制。传播价值：用最少信息建立画面情绪与记忆点。">
+              <img src="assets/photo-afterglow.webp" alt="余晖摄影作品" loading="lazy">
+            </button>
+            <div class="archive-body">
+              <p class="section-label">Photography</p>
+              <h3>余晖</h3>
+              <p>逆光剪影与情绪记忆点。</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section blue" id="contact">
+      <div class="wrap">
+        <div class="contact-panel reveal">
+          <div>
+            <p class="section-label">联系我</p>
+            <h2>讨论 AI 产品与内容运营。</h2>
+          <p>期待 AI 产品运营、Agent 产品运营、AIGC 内容产品与产品运营实习相关机会。也欢迎交流 AI 工作流、Dify 知识蒸馏、AIGC 视频与交互原型。</p>
+            <div class="section-actions">
+              <a class="btn primary" href="mailto:3091595176@qq.com">发送邮件</a>
+              <button class="btn secondary" type="button" data-copy-email>复制邮箱</button>
+              <a class="btn" href="assets/huang-xiongye-ai-product-agent-resume.docx" download>下载简历</a>
+            </div>
+          </div>
+          <div class="contact-list">
+            <div class="contact-line"><strong>Email</strong><span>3091595176@qq.com</span></div>
+            <div class="contact-line"><strong>Phone</strong><span>18078105236</span></div>
+            <div class="contact-line"><strong>Location</strong><span>厦门 / 广西南宁</span></div>
+            <div class="contact-line"><strong>Direction</strong><span>AI 产品运营 / Agent 产品运营</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>© 2026 Huang Xiongye. AI Product Operations Portfolio.</span>
+      <span>Apple-style white product page redesign.</span>
+    </div>
+  </footer>
+
+  <a class="back-top" id="backTop" href="#home" aria-label="返回顶部">↑</a>
+
+  <div class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-label="摄影作品大图">
+    <button class="lightbox-close" id="lightboxClose" type="button" aria-label="关闭">×</button>
+    <div class="lightbox-panel">
+      <img class="lightbox-img" id="lightboxImg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='9'%3E%3C/svg%3E" alt="">
+      <div class="lightbox-copy">
+        <h3 id="lightboxTitle"></h3>
+        <p id="lightboxDesc"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const $ = (selector, root = document) => root.querySelector(selector);
+      const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      document.documentElement.classList.toggle('motion-ready', !prefersReducedMotion);
+      document.documentElement.classList.toggle('reduced-motion', prefersReducedMotion);
+
+      const siteHeader = $('#siteHeader');
+      const navLinks = $('#navLinks');
+      const mobileToggle = $('#mobileToggle');
+      const backTop = $('#backTop');
+      const email = '3091595176@qq.com';
+
+      function updateScrollState() {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        backTop.classList.toggle('is-visible', scrollTop > 620);
+        siteHeader.classList.toggle('is-scrolled', scrollTop > 12);
+      }
+      window.addEventListener('scroll', updateScrollState, { passive: true });
+      updateScrollState();
+
+      mobileToggle.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('is-open');
+        mobileToggle.setAttribute('aria-expanded', String(isOpen));
+        mobileToggle.textContent = isOpen ? '×' : '☰';
+      });
+      $$('#navLinks a').forEach((link) => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('is-open');
+          mobileToggle.setAttribute('aria-expanded', 'false');
+          mobileToggle.textContent = '☰';
+        });
+      });
+
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const id = entry.target.id;
+          entry.target.classList.add('is-visible');
+          $$('#navLinks a').forEach((link) => {
+            link.classList.toggle('is-active', link.getAttribute('href') === `#${id}`);
+          });
+        });
+      }, { threshold: 0.34 });
+      $$('main section[id]').forEach((section) => sectionObserver.observe(section));
+
+      const staggerSelectors = ['.feature-grid', '.capability-grid', '.project-list', '.org-grid', '.tool-grid', '.archive-grid'];
+      staggerSelectors.forEach((selector) => {
+        $$(selector).forEach((group) => {
+          Array.from(group.children).forEach((item, index) => {
+            item.style.setProperty('--stagger-delay', `${Math.min(index * 90, 540)}ms`);
+          });
+        });
+      });
+      $$('.timeline-row').forEach((row, index) => {
+        row.classList.add('reveal');
+        row.style.setProperty('--stagger-delay', `${Math.min(index * 90, 360)}ms`);
+      });
+
+      if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          });
+        }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
+        $$('.reveal, .film-visual').forEach((item) => revealObserver.observe(item));
+      } else {
+        $$('.reveal, .film-visual').forEach((item) => item.classList.add('is-visible'));
+      }
+
+      const workflowStory = $('[data-workflow-story]');
+      const workflowNodes = $$('[data-workflow-node]');
+      const workflowTexts = $$('[data-workflow-text]');
+      let workflowTicking = false;
+      function setWorkflowStep(index) {
+        workflowNodes.forEach((node, itemIndex) => {
+          node.classList.toggle('is-active', itemIndex === index);
+          node.classList.toggle('is-complete', itemIndex < index);
+        });
+        workflowTexts.forEach((item, itemIndex) => {
+          item.classList.toggle('is-active', itemIndex === index);
+        });
+      }
+      function updateWorkflow() {
+        workflowTicking = false;
+        if (!workflowStory || workflowNodes.length === 0) return;
+        const rect = workflowStory.getBoundingClientRect();
+        const viewport = window.innerHeight || document.documentElement.clientHeight;
+        const travel = Math.max(rect.height - viewport * .62, 1);
+        const progress = Math.min(Math.max((viewport * .42 - rect.top) / travel, 0), 1);
+        const index = Math.min(workflowNodes.length - 1, Math.floor(progress * workflowNodes.length));
+        setWorkflowStep(index);
+      }
+      function requestWorkflowUpdate() {
+        if (workflowTicking || prefersReducedMotion) return;
+        workflowTicking = true;
+        window.requestAnimationFrame(updateWorkflow);
+      }
+      if (!prefersReducedMotion && workflowStory) {
+        window.addEventListener('scroll', requestWorkflowUpdate, { passive: true });
+        window.addEventListener('resize', requestWorkflowUpdate);
+        updateWorkflow();
+      }
+
+      async function copyText(value) {
+        let copied = false;
+        if (navigator.clipboard && window.isSecureContext) {
+          try {
+            await Promise.race([
+              navigator.clipboard.writeText(value),
+              new Promise((_, reject) => setTimeout(() => reject(new Error('clipboard-timeout')), 500))
+            ]);
+            copied = true;
+          } catch (error) {
+            copied = false;
+          }
+        }
+        if (!copied) {
+          const textarea = document.createElement('textarea');
+          textarea.value = value;
+          textarea.setAttribute('readonly', '');
+          textarea.style.position = 'fixed';
+          textarea.style.left = '-9999px';
+          document.body.appendChild(textarea);
+          textarea.select();
+          try {
+            copied = document.execCommand('copy');
+          } catch (error) {
+            copied = false;
+          } finally {
+            document.body.removeChild(textarea);
+          }
+        }
+        return copied;
+      }
+      $$('[data-copy-email]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const oldText = button.textContent;
+          const copied = await copyText(email);
+          button.textContent = copied ? '已复制邮箱' : '请手动复制邮箱';
+          setTimeout(() => { button.textContent = oldText; }, 1500);
+        });
+      });
+
+      const filterButtons = $$('.filter-btn');
+      const archiveCards = $$('.archive-card');
+      const archiveGrid = $('.archive-grid');
+      filterButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const filter = button.dataset.filter;
+          filterButtons.forEach((item) => item.classList.toggle('is-active', item === button));
+          archiveGrid.classList.add('is-filtering');
+          archiveCards.forEach((card) => {
+            const categories = card.dataset.category || '';
+            const shouldShow = filter === 'all' || categories.includes(filter);
+            if (shouldShow) {
+              card.hidden = false;
+              requestAnimationFrame(() => card.classList.remove('is-filtered-out'));
+            } else {
+              card.classList.add('is-filtered-out');
+              window.setTimeout(() => { card.hidden = true; }, prefersReducedMotion ? 0 : 260);
+            }
+          });
+          window.setTimeout(() => archiveGrid.classList.remove('is-filtering'), 320);
+        });
+      });
+
+      const lightbox = $('#lightbox');
+      const lightboxImg = $('#lightboxImg');
+      const lightboxTitle = $('#lightboxTitle');
+      const lightboxDesc = $('#lightboxDesc');
+      const lightboxClose = $('#lightboxClose');
+      const emptySrc = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="16" height="9"%3E%3C/svg%3E';
+      function closeLightbox() {
+        lightbox.classList.remove('is-open');
+        lightboxImg.src = emptySrc;
+        document.body.style.overflow = '';
+      }
+      $$('.open-lightbox').forEach((button) => {
+        button.addEventListener('click', () => {
+          lightboxImg.src = button.dataset.img;
+          lightboxImg.alt = button.dataset.title || '摄影作品';
+          lightboxTitle.textContent = button.dataset.title || '';
+          lightboxDesc.textContent = button.dataset.desc || '';
+          lightbox.classList.add('is-open');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+      lightboxClose.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', (event) => {
+        if (event.target === lightbox) closeLightbox();
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox();
+      });
+    })();
+  </script>
+</body>
+</html>
