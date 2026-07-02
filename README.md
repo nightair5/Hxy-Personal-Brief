@@ -64,7 +64,7 @@ https://github.com/nightair5/Hxy-Personal-Brief
 .github/workflows/pages.yml
 ```
 
-如果仓库 Actions 与 Pages 权限正常，推送到 `main` 后会自动部署。若首次访问仍是 404，可在 GitHub 仓库中检查：
+如果仓库 Actions 与 Pages 权限正常，推送到 `main` 后会自动部署；工作流会尝试在首次运行时启用 Pages。若首次访问仍是 404，可在 GitHub 仓库中检查：
 
 - `Settings` → `Pages`
 - Source 选择 `GitHub Actions`
