@@ -58,11 +58,17 @@ http://127.0.0.1:8000/
 https://github.com/nightair5/Hxy-Personal-Brief
 ```
 
-推荐 Pages 设置：
+本仓库包含 GitHub Actions 部署工作流：
 
-- Source: `Deploy from a branch`
-- Branch: `main`
-- Folder: `/root`
+```text
+.github/workflows/pages.yml
+```
+
+如果仓库 Actions 与 Pages 权限正常，推送到 `main` 后会自动部署。若首次访问仍是 404，可在 GitHub 仓库中检查：
+
+- `Settings` → `Pages`
+- Source 选择 `GitHub Actions`
+- 保存后重新运行 `Deploy static site to Pages`
 
 部署后通常访问：
 
