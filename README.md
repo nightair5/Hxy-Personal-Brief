@@ -21,7 +21,7 @@
 
 - `assets/background/petal-field-soft.webp`：全站极淡花瓣背景场。
 - `assets/background/petal-field.webp`：保留参考图氛围的轻量背景素材。
-- `assets/petals/`：从参考图中提取出的透明花瓣 PNG，按 `large / medium / small / edge` 分类。
+- `assets/petals/`：从参考图中提取出的透明花瓣 PNG，按 `large / medium / small / blur / edge` 分类。
 
 页面通过以下 class 控制背景与动效：
 
